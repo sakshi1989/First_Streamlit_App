@@ -73,7 +73,7 @@ def with_colors(df):
 
 
 df = with_colors(df)
-# st.write(df)
+st.write(df)
 
 # Create the radiobuttons for the color
 color_radio = st.radio(
