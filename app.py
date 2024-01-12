@@ -6,18 +6,21 @@ import pandas as pd
 from vega_datasets import data
 
 
-@st.cache()
+# @st.cache()
+@st.cache_data
 def get_data(n):
     return np.random.rand(n)
 
 
-st.header('Homework 1')
+st.header('Executing different Elements in Streamlit')
 
-st.markdown(
-    "**QUESTION 1**: In previous homeworks you created dataframes from random numbers.\n"
-    "Create a datframe where the x axis limit is 100 and the y values are random values.\n"
-    "Print the dataframe you create and use the following code block to help get you started"
-)
+multi = '''**QUESTION 1**: Create a datframe where the x axis limit is 100 and the y values are random values.
+
+Print the dataframe. 
+
+**Answer:** 
+'''
+st.markdown(multi)
 
 x_limit = 100
 
@@ -32,26 +35,30 @@ df = pd.DataFrame({'x': x_axis,
 st.write(df)
 
 
-st.markdown(
-    "**QUESTION 2**: Using the dataframe you just created, create a basic scatterplot and Print it.\n"
-    "Use the following code block to help get you started."
-)
+multi = '''**QUESTION 2**: Using the above dataframe, create a basic scatterplot and Print it.
+
+**Answer:** 
+'''
+st.markdown(multi)
 
 scatter = alt.Chart(df).mark_point().encode(x='x', y='y')
 
 st.altair_chart(scatter, use_container_width=True)
 
 
-st.markdown(
-    "**QUESTION 3**: Lets make some edits to the chart by reading the documentation on Altair.\n"
-    "https://docs.streamlit.io/library/api-reference/charts/st.altair_chart.  "
-    "Make 5 changes to the graph, document the 5 changes you made using st.markdown(), and print the new scatterplot.  \n"
-    "To make the bullet points and learn more about st.markdown() refer to the following discussion.\n"
-    "https://discuss.streamlit.io/t/how-to-indent-bullet-point-list-items/28594/3"
-)
+multi = '''**QUESTION 3**: Lets make some edits to the chart by reading the documentation on Altair.
+https://docs.streamlit.io/library/api-reference/charts/st.altair_chart.  
+Make 5 changes to the graph, document the 5 changes you made using st.markdown(), and print 
+the new scatterplot. 
+To make the bullet points and learn more about st.markdown() refer to the following discussion.
+https://discuss.streamlit.io/t/how-to-indent-bullet-point-list-items/28594/3
+
+**Answer:** 
+'''
+st.markdown(multi)
 
 st.markdown("""
-The 5 changes I made were:
+The 5 changes made were:
 - _Connecting the points of the y-axis through line ordered by the x-axis_
 - _Added the color column [c] in the dataframe which will have 4 distinct colors, and added that column in the color option to show lines with color_
 - _Created a tooltip to show x, y & c value_
@@ -59,10 +66,9 @@ The 5 changes I made were:
 - _Made the graph interactive which will allow to zoom-out/zoom-in the graph. Additionally, also added the custom legend_
 """)
 
-# I do not want data to change so have added the color column into the function and hav added the cache for the function
-
-
-@st.cache()
+# I do not want data to change so have added the color column into the function, and have added the cache for
+# the function
+@st.cache_data
 def with_colors(df):
     # Generate colors
     color = ['red', 'blue', 'green', 'pink'] * 25
@@ -108,11 +114,12 @@ elif color_radio == 'red':
 # Display the chart
 st.altair_chart(scatter, use_container_width=True)
 
-st.markdown(
-    "**QUESTION 4**: Explore on your own!  Go visit https://altair-viz.github.io/gallery/index.html.\n "
-    "Pick a random visual, make two visual changes to it, document those changes, and plot the visual.  \n"
-    "You may need to pip install in our terminal for example pip install vega_datasets "
-)
+multi = '''**QUESTION 4**: Visit https://altair-viz.github.io/gallery/index.html."
+Pick a random visual, make two visual changes to it, document those changes, and plot the visual.
+
+**Answer:**
+'''
+st.markdown(multi)
 
 st.markdown("""
 The 2 changes I made were:
@@ -146,5 +153,6 @@ final_chart = final_chart.configure_axis(
     titleFontSize=20
 )
 # Display the final chart
+st.write("")
 st.altair_chart(final_chart, use_container_width=True)
 
